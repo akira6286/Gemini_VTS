@@ -26,9 +26,22 @@
 pip install asyncio requests pygame edge-tts pyvts websockets
 ```
 
-3. 設定金鑰
+### 3. 設定金鑰
 找到 config.py.example 檔案。
 
 將其更名為 config.py。
 
 填入你的 GEMINI_API_KEY 與 TWITCH_TOKEN。
+
+### 4. 啟動機器人
+確保 VTube Studio 已開啟並啟用 API 功能，然後執行：
+```bash
+py rina_main.py
+```
+🎮 使用說明
+機器人會監控你的 Twitch 頻道聊天室。
+
+當聊天室有新訊息時，機器人會透過 Gemini 生成回應。
+
+如果回應中包含特定關鍵字（如「你好」），VTS 模型會自動觸發對應動作。
+
