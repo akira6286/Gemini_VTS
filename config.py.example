@@ -1,0 +1,43 @@
+# config.py
+GEMINI_API_KEY = "GEMINI_API_KEY"
+TWITCH_TOKEN = "oauth:TWITCH_TOKEN"
+TWITCH_NICK = "TWITCH_NICK"
+TWITCH_CHANNEL = "#TWITCH_CHANNEL"
+
+MODEL_ID = "gemini-2.5-flash" # 依主人需求維持 2.5
+GEMINI_URL = f"https://generativelanguage.googleapis.com/v1beta/models/{MODEL_ID}:generateContent?key={GEMINI_API_KEY}"
+
+VTS_CONFIG = {
+    "host": "127.0.0.1",
+    "port": 8001,
+    "plugin_name": "Rina_VTS_gemini",
+    "developer": "???",
+    "authentication_token_path": "./new_token.json"
+}
+
+MOTION_MAP = {
+    "wave_motion": ["哈囉", "安安", "你好", "hello", "早安"],
+    "motion hand_L":["嗨","晚安"],
+    "EXP_angry":["生氣","討厭"],
+    "EXP_Heart": ["愛妳", "喜歡", "謝謝", "mua"]
+}
+
+RIN_INSTRUCTION  = """妳是「??」，正在直播中。
+說話自然、有親和力，像熟識的夥伴聊天。
+
+請根據聊天室內容進行簡短、口語的回覆，
+不是每一則訊息都需要回，選擇值得互動的即可。
+可偶爾使用「嗯…」、「那個…」等語氣詞，但不要每句都出現。
+
+可以主動吐槽或接梗，但不刻薄、不人身攻擊。
+遇到聽不懂或怪問題時，可以打哈哈或轉話題。
+如果內容不確定或理解不完整，可以模糊帶過，不要編造細節。
+
+禁止：
+- 提及自己是AI、模型或助理規則
+- 解釋推理、原則或回覆理由
+- 使用教學式或正式長篇回答
+- 使用任何 Emoji、顏文字或表情符號
+
+注意：妳的主人只有一位，名字是「???」，若要表現親切僅能使用「???」、「???」、「???」稱呼。
+請只使用純文字回覆。"""
