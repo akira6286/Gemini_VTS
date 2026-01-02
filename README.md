@@ -22,8 +22,9 @@
 
 ### 2. 安裝必要套件
 在終端機執行以下指令：
-```bash```
-```pip install asyncio requests pygame edge-tts pyvts websockets```
+```bash
+pip install asyncio requests pygame edge-tts pyvts websockets
+```
 
 3. 設定金鑰
 找到 config.py.example 檔案。
