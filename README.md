@@ -22,5 +22,12 @@
 
 ### 2. 安裝必要套件
 在終端機執行以下指令：
-```bash
-pip install asyncio requests pygame edge-tts pyvts websockets
+```bash```
+```pip install asyncio requests pygame edge-tts pyvts websockets```
+
+3. 設定金鑰
+找到 config.py.example 檔案。
+
+將其更名為 config.py。
+
+填入你的 GEMINI_API_KEY 與 TWITCH_TOKEN。
