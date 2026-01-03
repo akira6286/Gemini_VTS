@@ -1,47 +1,38 @@
-# 🐾 Rina Twitch Bot (凜奈) - VTS 連動 AI 機器人
+# 🐾 Rina Twitch Bot (凜奈) - 異步架構 VTS 連動 AI 機器人
 
-這是一個結合了 **Gemini AI** 記憶功能、**Edge-TTS** 語音合成，以及 **VTube Studio** 動作連動的 Twitch 聊天室機器人。
+這是一個專為 VTuber 設計，結合了 **Gemini AI**、**Edge-TTS** 語音合成，以及 **VTube Studio** 動作連動的 Twitch 聊天室機器人。
 
 ## 🌟 功能亮點
-- **AI 智能對話**：使用 Google Gemini API，具備短期對話記憶，能根據上下文回覆。
-- **名稱與貼圖辨識**：優化過濾 Twitch 貼圖代碼，並能精確分辨發言者姓名。
-- **語音系統**：透過 Edge-TTS 提供自然的人聲回覆，並與語音播放同步。
-- **VTS 動作連動**：根據 AI 回覆中的關鍵字，自動觸發 VTube Studio 的快捷動作（如：揮手、愛心、生氣）。
-- **模組化設計**：程式碼結構清晰，易於維護與擴充功能。
+- **非同步任務隊列**：基於 `asyncio` 的異步架構，確保監聽聊天室、AI 生成與語音播放並行不卡頓。
+- **智能訊息打包 (Message Batching)**：人多時自動打包多則訊息統一回覆，讓對話更具直播互動感。
+- **自動暱稱識別**：支援 Twitch Tags 解析，能直接稱呼觀眾的「中文顯示名稱」。
+- **AI 角色靈魂**：使用 Google Gemini API，並針對直播場景優化 Prompt，具備口頭禪與專屬稱呼功能。
+- **VTS 動作連動**：根據 AI 回覆關鍵字自動觸發 VTube Studio 動作（如：揮手、愛心、生氣）。
 
 ## 📂 專案結構
-- `rina_main.py`: 主程式入口，處理 Twitch IRC 連線。
-- `ai_module.py`: AI 邏輯模組，處理對話記憶與 Gemini 請求。
-- `vts_audio.py`: 語音播放與 VTube Studio 動作觸發。
-- `config.py.example`: 設定檔範例（使用前請更名為 `config.py`）。
+- `rina_main.py`: 主程式入口，負責 Twitch 連線與異步任務管理 (Producer-Consumer Pattern)。
+- `rina_ai_module.py`: AI 核心，處理 Gemini 請求與對話記憶。
+- `rina_VTS_Audio.py`: 語音合成與 VTube Studio API 介面。
+- `config.py`: 設定檔，包含 API 金鑰與頻道資訊。
 
 ## 🛠️ 安裝與設定
 
-### 1. 複製專案
-將本倉庫的所有檔案下載或複製到本地資料夾。
-
-### 2. 安裝必要套件
-在終端機執行以下指令：
+### 1. 安裝必要套件
 ```bash
-pip install asyncio requests pygame edge-tts pyvts websockets
+pip install asyncio pygame edge-tts pyvts websockets google-generativeai
 ```
 
-### 3. 設定金鑰
-找到 config.py.example 檔案。
+###2. 設定金鑰
+編輯 config.py 並填入必要的資訊：
 
-將其更名為 config.py。
+- GEMINI_API_KEY
 
-填入你的 GEMINI_API_KEY 與 TWITCH_TOKEN。
+- TWITCH_TOKEN (由 tmi.twitch.tv 取得)
 
-### 4. 啟動機器人
-確保 VTube Studio 已開啟並啟用 API 功能，然後執行：
+- TWITCH_CHANNEL
+
+###3. 啟動機器人
+確保 VTube Studio 已開啟並啟用 API 功能（第一次啟動需在 VTS 視窗內點擊允許連線），然後執行：
 ```bash
 py rina_main.py
 ```
-🎮 使用說明
-機器人會監控你的 Twitch 頻道聊天室。
-
-當聊天室有新訊息時，機器人會透過 Gemini 生成回應。
-
-如果回應中包含特定關鍵字（如「你好」），VTS 模型會自動觸發對應動作。
-
