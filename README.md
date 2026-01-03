@@ -27,7 +27,7 @@ pip install asyncio pygame edge-tts pyvts websockets google-generativeai
 
 - GEMINI_API_KEY
 
-- TWITCH_TOKEN (由 tmi.twitch.tv 取得)
+- TWITCH_TOKEN (由 [twitchtokengenerator.com/](https://twitchtokengenerator.com/) 取得)
 
 - TWITCH_CHANNEL
 
