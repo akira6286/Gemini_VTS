@@ -22,7 +22,7 @@
 pip install asyncio pygame edge-tts pyvts websockets google-generativeai
 ```
 
-###2. 設定金鑰
+### 2. 設定金鑰
 編輯 config.py 並填入必要的資訊：
 
 - GEMINI_API_KEY
@@ -31,7 +31,7 @@ pip install asyncio pygame edge-tts pyvts websockets google-generativeai
 
 - TWITCH_CHANNEL
 
-###3. 啟動機器人
+### 3. 啟動機器人
 確保 VTube Studio 已開啟並啟用 API 功能（第一次啟動需在 VTS 視窗內點擊允許連線），然後執行：
 ```bash
 py rina_main.py
