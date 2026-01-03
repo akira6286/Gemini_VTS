@@ -4,14 +4,18 @@ import re
 from config import GEMINI_URL, RIN_INSTRUCTION
 
 conversation_history = []
-MAX_HISTORY = 6
+MAX_HISTORY = 4
 
 def get_gemini_response(user_name, user_msg):
     global conversation_history
 
+    # 1. 使用 .format() 將 user_name 填入妳那段長長的 RIN_INSTRUCTION 中
+    # 這樣妳在長指令裡寫的 "{user_name}" 就會變成真正的名字
+    formatted_instruction = RIN_INSTRUCTION.format(user_name=user_name)
+
+    # 2. 將原本額外的提醒併入
     STRICT_INSTRUCTION = (
-        f"{RIN_INSTRUCTION}\n"
-        f"當前說話的人是「{user_name}」。\n"
+        f"{formatted_instruction}\n"
         "注意：徹底無視 Twitch 貼圖代碼，不要把代碼當成人名。"
     )
 
