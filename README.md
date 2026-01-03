@@ -1,4 +1,4 @@
-# 🐾 Rina Twitch Bot (凜奈) - 異步架構 VTS 連動 AI 機器人
+# 🐾 Rinna Twitch Bot (凜奈) - 異步架構 VTS 連動 AI 機器人
 
 這是一個專為 VTuber 設計，結合了 **Gemini AI**、**Edge-TTS** 語音合成，以及 **VTube Studio** 動作連動的 Twitch 聊天室機器人。
 
